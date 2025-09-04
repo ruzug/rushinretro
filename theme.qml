@@ -279,6 +279,8 @@ FocusScope {
             settings_general_hideOSC: "Hide controls",
             settings_general_dynamicFontScaling: "Dynamic font scaling",
             settings_general_OSCScheme: "Controls scheme",
+            settings_general_custom_bg: "Active custom background image",
+            settings_general_custom_bg_opacity: "Custom Background Opacity",
             settings_global_backgroundImg: "Background image",
             settings_global_videoPlayback: "Video playback",
             settings_global_videoMute: "Mute video",
@@ -361,6 +363,8 @@ FocusScope {
             settings_general_hideOSC: "隐藏按键提示",
             settings_general_dynamicFontScaling: "动态字体缩放",
             settings_general_OSCScheme: "按键方案",
+            settings_general_custom_bg: "Active custom background image",
+            settings_general_custom_bg_opacity: "Custom Background Opacity",
             settings_global_backgroundImg: "背景图片",
             settings_global_videoPlayback: "视频播放",
             settings_global_videoMute: "静音视频",
@@ -443,6 +447,8 @@ FocusScope {
             settings_general_hideOSC: "Steuerung ausblenden",
             settings_general_dynamicFontScaling: "Dynamische Schriftskalierung",
             settings_general_OSCScheme: "Steuerungschema",
+            settings_general_custom_bg: "Active custom background image",
+            settings_general_custom_bg_opacity: "Custom Background Opacity",
             settings_global_backgroundImg: "Hintergrundbild",
             settings_global_videoPlayback: "Videowiedergabe",
             settings_global_videoMute: "Video stummschalten",
@@ -525,6 +531,8 @@ FocusScope {
             settings_general_hideOSC: "Masquer les contrôles",
             settings_general_dynamicFontScaling: "Mise à l'échelle dynamique des polices",
             settings_general_OSCScheme: "Style des contrôles",
+            settings_general_custom_bg: "Active custom background image",
+            settings_general_custom_bg_opacity: "Custom Background Opacity",
             settings_global_backgroundImg: "Image de fond",
             settings_global_videoPlayback: "Activer les vidéos",
             settings_global_videoMute: "Désactiver le son des vidéos",
@@ -607,6 +615,8 @@ FocusScope {
             settings_general_hideOSC: "Ocultar controles",
             settings_general_dynamicFontScaling: "Dynamic font scaling",
             settings_general_OSCScheme: "Estilo de controle",
+            settings_general_custom_bg: "Active custom background image",
+            settings_general_custom_bg_opacity: "Custom Background Opacity",
             settings_global_backgroundImg: "Imagem de fundo",
             settings_global_videoPlayback: "Reprodução de vídeo",
             settings_global_videoMute: "Silenciar vídeo",
@@ -689,6 +699,8 @@ FocusScope {
             settings_general_hideOSC: "Ocultar controles",
             settings_general_dynamicFontScaling: "Escalado de fuentes dinámica",
             settings_general_OSCScheme: "Esquema de controles",
+            settings_general_custom_bg: "Activar imagen de fondo personalizada",
+            settings_general_custom_bg_opacity: "Opacidad del fondo personalizado",
             settings_global_backgroundImg: "Imagen de fondo",
             settings_global_videoPlayback: "Reproducción de vídeo",
             settings_global_videoMute: "Silenciar video",
@@ -772,6 +784,13 @@ FocusScope {
             return "1.0";
         }
     }
+    property bool customBg: {
+        if (api.memory.get('customBgIndex') == "1") {
+            return true;
+        }
+        return false;
+    }
+    property double customBgOpacity: (api.memory.get('customBgOpacityIndex') + 1) / 10 || 0.1
     property int homeBGImg: api.memory.get('homeBGImgIndex') || 0
     property bool homeImgPrecompose: {
         if (api.memory.get('homeImgPrecomposeIndex') == "1") {
@@ -1293,6 +1312,20 @@ FocusScope {
         width: parent.width
         height: parent.height
         color: colorScheme[theme].background
+    }
+
+    Image {
+        id: background_image
+        width: parent.width
+        height: parent.height
+        anchors {
+            topMargin: parent.height * 0.1
+            top: root.top
+        }
+        source: "./assets/custom_background.png"
+        fillMode: Image.PreserveAspectCrop
+        opacity: customBgOpacity
+        visible: customBg
     }
 
     Settings {

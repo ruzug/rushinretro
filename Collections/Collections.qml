@@ -35,6 +35,7 @@ FocusScope {
         width: parent.width * 0.28
         height: parent.height
         antialiasing: true
+        opacity: 0.5
         anchors {
             left: parent.left
             leftMargin: parent.width * 0.23

@@ -21,9 +21,9 @@ import QtGraphicalEffects 1.12
 Item {
     property var game
 
-    visible: game
+    signal loadBackground(empty: bool)
 
-    readonly property double currentMaxOpacity: game && fanArt(game) && 1.0 || 0.35
+    readonly property double currentMaxOpacity: 1.0
     readonly property string currentSource: {
         if (!game)
             return "";
@@ -44,6 +44,7 @@ Item {
         id: delay
         interval: 200
         onTriggered: {
+            loadBackground(currentSource == "")
             if (state == "") {
                 imgA.source = currentSource;
                 state = "alt";
@@ -70,7 +71,7 @@ Item {
         id: imgB
         anchors.fill: parent
         opacity: currentMaxOpacity
-        visible: opacity > 0 && source
+        visible: opacity > 0
 
         sourceSize { width: 512; height: 512 }
         fillMode: Image.PreserveAspectCrop

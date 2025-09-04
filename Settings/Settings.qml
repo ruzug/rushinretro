@@ -23,6 +23,20 @@ FocusScope {
                 to: parent.width * 0.23
                 duration: 250
             }
+            PropertyAnimation {
+                target: skew_color_left
+                property: "width"
+                from: parent.width * 0
+                to: parent.width * 0.22
+                duration: 350
+            }
+            PropertyAnimation {
+                target: skew_color_right
+                property: "anchors.leftMargin"
+                from: parent.width * 1.3
+                to: parent.width * 0.74
+                duration: 350
+            }
         }
     }
 
@@ -40,6 +54,60 @@ FocusScope {
         Behavior on color {
             ColorAnimation { duration: 250; }
         }
+        opacity:0.7
+
+        transform: Matrix4x4 {
+            property real a: 12 * Math.PI / 180
+            matrix: Qt.matrix4x4(
+                1,      -Math.tan(a),       0,      0,
+                0,      1,                  0,      0,
+                0,      0,                  1,      0,
+                0,      0,                  0,      1
+            )
+        }
+    }
+
+    Rectangle {
+        id: skew_color_left
+
+        width: parent.width * 0.22
+        height: parent.height
+        antialiasing: true
+        anchors {
+            left: parent.left
+        }
+        color: colorScheme[theme].secondary
+        Behavior on color {
+            ColorAnimation { duration: 250; }
+        }
+        opacity:0.7
+
+        transform: Matrix4x4 {
+            property real a: 12 * Math.PI / 180
+            matrix: Qt.matrix4x4(
+                1,      -Math.tan(a),       0,      0,
+                0,      1,                  0,      0,
+                0,      0,                  1,      0,
+                0,      0,                  0,      1
+            )
+        }
+    }
+
+    Rectangle {
+        id: skew_color_right
+
+        width: parent.width * 0.5
+        height: parent.height
+        antialiasing: true
+        anchors {
+            left: parent.left
+            leftMargin: parent.width * 0.74
+        }
+        color: colorScheme[theme].secondary
+        Behavior on color {
+            ColorAnimation { duration: 250; }
+        }
+        opacity:0.7
 
         transform: Matrix4x4 {
             property real a: 12 * Math.PI / 180
@@ -65,7 +133,9 @@ FocusScope {
                 [ dataText[lang].settings_general_hideOSC,  "osc",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ],
                 [ dataText[lang].settings_general_OSCScheme,  "controlScheme",  "",  "Universal,Universal-JP,XBOX,PS,PS-JP" ],
                 [ dataText[lang].settings_general_music,  "music",  dataText[lang].settings_general_restart,  dataText[lang].global_no + "," + dataText[lang].global_yes ],
-                [ dataText[lang].settings_general_muteSounds,  "mutesfx",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ]
+                [ dataText[lang].settings_general_muteSounds,  "mutesfx",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ],
+                [ dataText[lang].settings_general_custom_bg,  "customBg",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ],
+                [ dataText[lang].settings_general_custom_bg_opacity,  "customBgOpacity",  "",  "0.1,0.2,0.3,0.4,0.5,0.6" ]
             ].forEach(function(element) {
                 append({
                             settingName: element[0],
@@ -253,6 +323,7 @@ FocusScope {
             top: parent.top
             topMargin: vpx(40)
             bottom: parent.bottom
+            bottomMargin: vpx(120)
             left: pagelist.right
             right: parent.right
         }
@@ -325,7 +396,7 @@ FocusScope {
                         pixelSize: vpx(20  * fontScalingFactor)
                     }
                     verticalAlignment: Text.AlignVCenter
-                    opacity: selected ? 1 : 0.2
+                    opacity: selected ? 1 : 0.5
 
                     height: parent.height
                     anchors {

@@ -4,6 +4,8 @@ import SortFilterProxyModel 0.2
 import "../Global"
 
 FocusScope {
+    id: home_element
+
     property int currentLastPlayedIndex: 0
     property int currentFavoritesIndex: 0
     property var previousLastplayed: lastplayed_left
@@ -75,6 +77,23 @@ FocusScope {
         }
     }
 
+    states: State {
+        name: "alt"
+        PropertyChanges { target: skew_color; opacity: 1 }
+        PropertyChanges { target: backgroundimage; opacity: 0.255 }
+    }
+    transitions: Transition {
+        NumberAnimation { properties: 'opacity'; duration: 500 }
+    }
+
+    Rectangle {
+        id: back_color
+        width: parent.width
+        height: parent.height
+        color: colorScheme[theme].background
+        opacity: 0
+    }
+
     // Skewed background
     Rectangle {
         id: skew_color
@@ -103,6 +122,13 @@ FocusScope {
                 top: parent.top; bottom: parent.bottom
             }
             visible: homeBGImg !== 1
+            onLoadBackground: (empty) => {
+                if (empty || homeBGImg == 1) {
+                    home_element.state = "";
+                } else {
+                    home_element.state = "alt";
+                }
+            }
         }
         opacity: 0.255
     }

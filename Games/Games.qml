@@ -7,6 +7,8 @@ import "../Global"
 import "../Filter"
 
 FocusScope {
+    id: games_element
+
     property int sortIndex: getSortIndex()
     readonly property var sortFields: getAvailableSortFields()
     readonly property var sortLabels: {
@@ -173,6 +175,22 @@ FocusScope {
         }
     }
 
+    states: State {
+        name: "alt"
+        PropertyChanges { target: back_color; opacity: 1 }
+    }
+    transitions: Transition {
+        NumberAnimation { properties: 'opacity'; duration: 500 }
+    }
+
+    Rectangle {
+        id: back_color
+        width: parent.width
+        height: parent.height
+        color: colorScheme[theme].background
+        opacity: 0
+    }
+
     // Background image
     BackgroundImage {
         id: backgroundimage
@@ -185,6 +203,13 @@ FocusScope {
         }
         opacity: 0.255
         visible: gamesBGImg !== 1
+        onLoadBackground: (empty) => {
+            if (empty || gamesBGImg == 1) {
+                games_element.state = "";
+            } else {
+                games_element.state = "alt";
+            }
+        }
     }
 
     // Skewed background
