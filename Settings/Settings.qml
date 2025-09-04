@@ -19,7 +19,7 @@ FocusScope {
             PropertyAnimation {
                 target: skew_color
                 property: "anchors.leftMargin"
-                from: parent.width *1.5
+                from: parent.width * 1.5
                 to: parent.width * 0.23
                 duration: 250
             }
@@ -56,16 +56,16 @@ FocusScope {
         id: settingsModel
         Component.onCompleted: {
             [
-            [ dataText[lang].settings_general_language,  "lang",  dataText[lang].settings_general_restart,  "en,ch,de,fr,pt,es" ],
-            [ dataText[lang].settings_general_dynamicFontScaling,  "dynamicFontScaling",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ],
-            [ dataText[lang].settings_general_colorScheme,  "theme",  "",  dataText[lang].settings_general_colorScheme_Dark + "," + dataText[lang].settings_general_colorScheme_Light + "," + dataText[lang].settings_general_colorScheme_OzoneDark + "," + dataText[lang].settings_general_colorScheme_SteamOS ],
-            [ dataText[lang].settings_general_selectionFrame,  "selectionFrame",  "", dataText[lang].menu_collections + "," + dataText[lang].settings_general_colorScheme ],
-            [ dataText[lang].settings_general_logoVariant,  "logoVariant",  "",  dataText[lang].settings_general_logoVariant_mono+ "," + dataText[lang].settings_general_logoVariant_color ],
-            [ dataText[lang].settings_general_region,  "region",  "",  "pal,ntsc,ntscj" ],
-            [ dataText[lang].settings_general_hideOSC,  "osc",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ],
-            [ dataText[lang].settings_general_OSCScheme,  "controlScheme",  "",  "Universal,Universal-JP,XBOX,PS,PS-JP" ],
-            [ dataText[lang].settings_general_music,  "music",  dataText[lang].settings_general_restart,  dataText[lang].global_no + "," + dataText[lang].global_yes ],
-            [ dataText[lang].settings_general_muteSounds,  "mutesfx",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ]
+                [ dataText[lang].settings_general_language,  "lang",  dataText[lang].settings_general_restart,  "en,ch,de,fr,pt,es" ],
+                [ dataText[lang].settings_general_dynamicFontScaling,  "dynamicFontScaling",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ],
+                [ dataText[lang].settings_general_colorScheme,  "theme",  "",  dataText[lang].settings_general_colorScheme_Dark + "," + dataText[lang].settings_general_colorScheme_Light + "," + dataText[lang].settings_general_colorScheme_OzoneDark + "," + dataText[lang].settings_general_colorScheme_SteamOS ],
+                [ dataText[lang].settings_general_selectionFrame,  "selectionFrame",  "", dataText[lang].menu_collections + "," + dataText[lang].settings_general_colorScheme ],
+                [ dataText[lang].settings_general_logoVariant,  "logoVariant",  "",  dataText[lang].settings_general_logoVariant_mono+ "," + dataText[lang].settings_general_logoVariant_color ],
+                [ dataText[lang].settings_general_region,  "region",  "",  "pal,ntsc,ntscj" ],
+                [ dataText[lang].settings_general_hideOSC,  "osc",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ],
+                [ dataText[lang].settings_general_OSCScheme,  "controlScheme",  "",  "Universal,Universal-JP,XBOX,PS,PS-JP" ],
+                [ dataText[lang].settings_general_music,  "music",  dataText[lang].settings_general_restart,  dataText[lang].global_no + "," + dataText[lang].global_yes ],
+                [ dataText[lang].settings_general_muteSounds,  "mutesfx",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ]
             ].forEach(function(element) {
                 append({
                             settingName: element[0],
@@ -88,11 +88,12 @@ FocusScope {
         id: homeSettingsModel
         Component.onCompleted: {
             [
-            [ dataText[lang].settings_global_ImgPrecompose,  "homeImgPrecompose",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ],
-            [ dataText[lang].settings_global_ImgPrecomposePref,  "homeImgPrecomposePref",  "",  "Steam" + "," + "Marquee" ],     
-            [ dataText[lang].settings_home_videoLogo,  "homeVideoLogo",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
-            [ dataText[lang].settings_global_videoPlayback,  "homeVideo",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
-            [ dataText[lang].settings_global_videoMute,  "homeVideoMute",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ]
+                [ dataText[lang].settings_global_backgroundImg,  "homeBGImg",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
+                [ dataText[lang].settings_global_ImgPrecompose,  "homeImgPrecompose",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ],
+                [ dataText[lang].settings_global_ImgPrecomposePref,  "homeImgPrecomposePref",  "",  "Steam" + "," + "Marquee" ],     
+                [ dataText[lang].settings_home_videoLogo,  "homeVideoLogo",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
+                [ dataText[lang].settings_global_videoPlayback,  "homeVideo",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
+                [ dataText[lang].settings_global_videoMute,  "homeVideoMute",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ]
             ].forEach(function(element) {
                 append({
                             settingName: element[0],
@@ -115,14 +116,14 @@ FocusScope {
         id: collectionSettingsModel
         Component.onCompleted: {
             [
-            [ dataText[lang].settings_collection_accentColor,  "accentColor",  "",  dataText[lang].settings_collection_accentColor_dimm + "," + dataText[lang].settings_collection_accentColor_bright ],
-            [ dataText[lang].settings_collection_accentColorNr,  "accentColorNr",  "",  "2,1" ],
-            [ dataText[lang].settings_collection_menuColor,  "menuColor",  "",  dataText[lang].settings_general_logoVariant_mono+ "," + dataText[lang].settings_general_logoVariant_color ],
-            [ dataText[lang].settings_collection_showAll,  "allGamesCollection",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
-            [ dataText[lang].settings_collection_showFavorites,  "favoritesCollection",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
-            [ dataText[lang].settings_collection_showLastPlayed,  "lastPlayedCollection",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
-            [ dataText[lang].settings_global_videoPlayback,  "collectionVideo",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
-            [ dataText[lang].settings_global_videoMute,  "collectionVideoMute",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ]
+                [ dataText[lang].settings_collection_accentColor,  "accentColor",  "",  dataText[lang].settings_collection_accentColor_dimm + "," + dataText[lang].settings_collection_accentColor_bright ],
+                [ dataText[lang].settings_collection_accentColorNr,  "accentColorNr",  "",  "2,1" ],
+                [ dataText[lang].settings_collection_menuColor,  "menuColor",  "",  dataText[lang].settings_general_logoVariant_mono+ "," + dataText[lang].settings_general_logoVariant_color ],
+                [ dataText[lang].settings_collection_showAll,  "allGamesCollection",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
+                [ dataText[lang].settings_collection_showFavorites,  "favoritesCollection",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
+                [ dataText[lang].settings_collection_showLastPlayed,  "lastPlayedCollection",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
+                [ dataText[lang].settings_global_videoPlayback,  "collectionVideo",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
+                [ dataText[lang].settings_global_videoMute,  "collectionVideoMute",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ]
             ].forEach(function(element) {
                 append({
                             settingName: element[0],
@@ -145,14 +146,14 @@ FocusScope {
         id: gameSettingsModel
         Component.onCompleted: {
             [
-            [ dataText[lang].settings_games_layout,  "gamesLayout",  "",  "BoxArt-Grid,Screenshot-Grid" ],
-            [ dataText[lang].settings_games_gridItemsPerRow,  "gamesGridIPR",  "",  "4,5,6,2,3" ],
-            [ dataText[lang].settings_games_gridItemsViewableRows,  "gamesGridVR",  "",  "1,2,3,4,5,dynamic" ],
-            [ dataText[lang].settings_global_backgroundImg,  "gamesBGImg",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
-            [ dataText[lang].settings_global_videoPlayback,  "gamesVideo",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
-            [ dataText[lang].settings_global_videoMute,  "gamesVideoMute",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ],
-            [ dataText[lang].settings_games_BoxArtPref,  "gamesBoxArtPref",  "",  "Boxfront,Poster,Steam,Marquee" ],
-            [ dataText[lang].settings_games_page_updown_function,  "gamesPageUpDownFunction",  "",  "Collections,Games" ]
+                [ dataText[lang].settings_games_layout,  "gamesLayout",  "",  "BoxArt-Grid,Screenshot-Grid" ],
+                [ dataText[lang].settings_games_gridItemsPerRow,  "gamesGridIPR",  "",  "4,5,6,2,3" ],
+                [ dataText[lang].settings_games_gridItemsViewableRows,  "gamesGridVR",  "",  "1,2,3,4,5,dynamic" ],
+                [ dataText[lang].settings_global_backgroundImg,  "gamesBGImg",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
+                [ dataText[lang].settings_global_videoPlayback,  "gamesVideo",  "",  dataText[lang].global_yes + "," + dataText[lang].global_no ],
+                [ dataText[lang].settings_global_videoMute,  "gamesVideoMute",  "",  dataText[lang].global_no + "," + dataText[lang].global_yes ],
+                [ dataText[lang].settings_games_BoxArtPref,  "gamesBoxArtPref",  "",  "Boxfront,Poster,Steam,Marquee" ],
+                [ dataText[lang].settings_games_page_updown_function,  "gamesPageUpDownFunction",  "",  "Collections,Games" ]
             ].forEach(function(element) {
                 append({
                             settingName: element[0],

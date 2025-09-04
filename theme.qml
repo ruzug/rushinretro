@@ -772,6 +772,7 @@ FocusScope {
             return "1.0";
         }
     }
+    property int homeBGImg: api.memory.get('homeBGImgIndex') || 0
     property bool homeImgPrecompose: {
         if (api.memory.get('homeImgPrecomposeIndex') == "1") {
             return true;

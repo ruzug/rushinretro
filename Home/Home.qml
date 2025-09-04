@@ -102,8 +102,9 @@ FocusScope {
                 left: parent.left; right: parent.right
                 top: parent.top; bottom: parent.bottom
             }
-            opacity: 0.255
+            visible: homeBGImg !== 1
         }
+        opacity: 0.255
     }
 
     // Build page as a big column
