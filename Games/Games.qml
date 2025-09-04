@@ -346,15 +346,15 @@ FocusScope {
                                 }
                             }
 
-							if (currentGame.rating > 1) {
-								Row {
-									spacing: vpx(5)
-									// RATING
-									RatingStars {
-										readonly property double rating: (currentGame.rating * 5).toFixed(1)
-									}
+							Row {
+								spacing: vpx(5)
+								// RATING
+								RatingStars {
+									readonly property double rating: (currentGame.rating * 5).toFixed(1)
 								}
+                                visible: currentGame ? currentGame.rating > 1 : false
 							}
+
 
                             Row {
                                 spacing: vpx(10)
@@ -931,7 +931,7 @@ FocusScope {
 
     function getSortLabel() {
         if (currentCollection.shortName == 'lastplayed') {
-            return 'Last Played';
+            return dataText[lang].sort_label_last_played;
         } else {
             return sortLabels[sortField];
         }
