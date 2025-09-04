@@ -98,7 +98,7 @@ Item {
                 sourceSize: Qt.size(screenshot.width, screenshot.height)
                 smooth: false
                 asynchronous: true
-                visible: homeImgPrecomposePref == "marquee" && gameData.assets.marquee
+                visible: false
             }
             Image {
                 id: steamgrid
@@ -119,7 +119,7 @@ Item {
             id: screenshot
             anchors.fill: parent
             anchors.margins: vpx(3)
-            source: gameData ? gameData.assets.screenshots[0] || gameData.assets.background || "" : ""
+            source: gameData ? gameData.collections.get(0).shortName === "android" ? "" : gameData.assets.screenshots[0] || gameData.assets.titlescreen || gameData.assets.background || boxArt(gameData) || "" : ""
             fillMode: Image.PreserveAspectCrop
             sourceSize: Qt.size(screenshot.width, screenshot.height)
             smooth: false
@@ -139,7 +139,7 @@ Item {
             anchors.centerIn: parent
             anchors.margins: root.width/10
             property string logoImage: (gameData && gameData.collections.get(0).shortName === "retropie") ? gameData.assets.boxFront : (gameData.collections.get(0).shortName === "steam") ? logo(gameData) : gameData.assets.logo
-            source: gameData ? logoImage || "" : ""
+            source: gameData ? gameData.collections.get(0).shortName === "android" ? boxArt(gameData) : logoImage || "" : ""
             sourceSize: Qt.size(favelogo.width, favelogo.height)
             fillMode: Image.PreserveAspectFit
             asynchronous: true
@@ -175,7 +175,7 @@ Item {
         horizontalAlignment : Text.AlignHCenter
         verticalAlignment : Text.AlignVCenter
         wrapMode: Text.Wrap
-        visible: gameData.assets.logo === ""
+        visible: (favelogo.status === Image.Null && screenshot.status === Image.Null) || (favelogo.status === Image.Error && screenshot.status === Image.Error)
     }
 
     Rectangle {
@@ -228,6 +228,36 @@ Item {
                 return steamLogo(data);
             else {
                 if (data.assets.logo != "")
+                    return data.assets.logo;
+            }
+        }
+        return "";
+    }
+	
+	function boxArt(data) {
+        if (data != null) {
+            if (data.assets.boxFront.includes("header.jpg"))
+                return steamBoxFront(data);
+        else {
+            if (data.assets.boxFront != "" && gamesBoxArtPref == "boxfront")
+                return data.assets.boxFront;
+            else if (data.assets.poster != "" && gamesBoxArtPref == "poster")
+                return data.assets.poster;
+            else if (data.assets.steam != "" && gamesBoxArtPref == "steam")
+                return data.assets.steam;
+            else if (data.assets.marquee != "" && gamesBoxArtPref == "marquee")
+                return data.assets.marquee;
+            else if (data.assets.boxFront != "")
+                return data.assets.boxFront;
+            else if (data.assets.poster != "")
+                return data.assets.poster;
+            else if (data.assets.banner != "")
+                return data.assets.banner;
+            else if (data.assets.tile != "")
+                return data.assets.tile;
+            else if (data.assets.cartridge != "")
+                return data.assets.cartridge;
+            else if (data.assets.logo != "")
                     return data.assets.logo;
             }
         }
