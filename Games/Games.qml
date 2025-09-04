@@ -300,7 +300,7 @@ FocusScope {
                                 spacing: vpx(5)
 
                                 Text {
-                                    text: dataText[lang].games_developedBy
+                                    text: currentGame.developer ? dataText[lang].games_developedBy : ""
                                     font {
                                         family: global.fonts.sans
                                         weight: Font.Light
@@ -346,13 +346,15 @@ FocusScope {
                                 }
                             }
 
-                            Row {
-                                spacing: vpx(5)
-                                // RATING
-                                RatingStars {
-                                    readonly property double rating: (currentGame.rating * 5).toFixed(1)
-                                }
-                            }
+							if (currentGame.rating > 1) {
+								Row {
+									spacing: vpx(5)
+									// RATING
+									RatingStars {
+										readonly property double rating: (currentGame.rating * 5).toFixed(1)
+									}
+								}
+							}
 
                             Row {
                                 spacing: vpx(10)
