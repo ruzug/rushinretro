@@ -267,8 +267,8 @@ FocusScope {
 
         Controls {
             id: button_D
-
-            message: "<b>" + currentCollection.name + "</b> " + dataText[lang].global_games
+            property string collection: "<b>" + currentCollection.name + "</b>" 
+            message: lang === "es" ? dataText[lang].global_games + " " + collection : collection + " " + dataText[lang].global_games
 
             text_color: colorScheme[theme].accepted
             front_color: colorScheme[theme].accepted.replace(/#/g, "#33");

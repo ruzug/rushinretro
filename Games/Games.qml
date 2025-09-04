@@ -9,7 +9,15 @@ import "../Filter"
 FocusScope {
     property int sortIndex: getSortIndex()
     readonly property var sortFields: getAvailableSortFields()
-    readonly property var sortLabels: {'sortTitle':'Title', 'release':'Release Date', 'rating':'Rating', 'genre':'Genre', 'lastPlayed':'Last Played', 'favorite':'Favorite', 'custom':'Custom'}
+    readonly property var sortLabels: {
+        'sortTitle':dataText[lang].sort_label_title, 
+        'release':dataText[lang].sort_label_release, 
+        'rating':dataText[lang].sort_label_rating, 
+        'genre':dataText[lang].sort_label_genre, 
+        'lastPlayed':dataText[lang].sort_label_last_played, 
+        'favorite':dataText[lang].sort_label_favorite, 
+        'custom':dataText[lang].sort_label_custom
+    }
     readonly property string sortField: sortFields[sortIndex]
     readonly property string collectionType: currentCollection.extra.collectiontype !== undefined ? currentCollection.extra.collectiontype.toString() : 'System'
     readonly property var customSystemLogoCategories: ['Custom', 'Series']
