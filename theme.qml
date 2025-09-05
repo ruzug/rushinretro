@@ -1127,7 +1127,7 @@ FocusScope {
         "ps3":                { manufacturer: "sony",          release: "2006", color: "#0D1114", altColor: "#333333", altColor2: "#0095D5", fullName: "PS3"  },
         "psp":                { manufacturer: "sony",          release: "2004", color: "#313131", altColor: "#141414", altColor2: "#97A9BA", fullName: "PSP"  },
         "pspminis":           { manufacturer: "sony",          release: "2004", color: "#313131", altColor: "#141414", altColor2: "#97A9BA", fullName: "PSP Minis"  },
-        "psvita":             { manufacturer: "sony",          release: "2011", color: "#0F1012", altColor: "#000000", altColor2: "#F9F7F7", fullName: "PS Vita"  },
+        "psvita":             { manufacturer: "sony",          release: "2011", color: "#0F1012", altColor: "#33363d", altColor2: "#F9F7F7", fullName: "PS Vita"  },
         "psx":                { manufacturer: "sony",          release: "1994", color: "#F1C002", altColor: "#CAA202", altColor2: "#252525", fullName: "PlayStation"  },
         "pv1000":             { manufacturer: "casio",         release: "1983", color: "#526B89", altColor: "#435770", altColor2: "#DA353A", fullName: "Casio PV-1000"  },
         "residualvm":         { manufacturer: "pc",            release: null,   color: "#CDA335", altColor: "#B8912E", altColor2: "#9ECB2E", fullName: "PC"  },
