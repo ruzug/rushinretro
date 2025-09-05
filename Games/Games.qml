@@ -385,7 +385,7 @@ FocusScope {
 								RatingStars {
 									readonly property double rating: (currentGame.rating * 5).toFixed(1)
 								}
-                                visible: currentGame ? currentGame.rating > 1 : false
+                                visible: currentGame ? currentGame.rating > 0 : false
 							}
 
 

@@ -88,19 +88,6 @@ Item {
         }
     }
 
-    Rectangle {
-        id: rect_stars
-        width: rating_stars.width + vpx(10)
-        height: rating_stars.height + vpx(7)
-        anchors {
-            top: rating_stars.top
-            topMargin: -vpx(1)
-            left: rating_stars.left
-            leftMargin: -vpx(3)
-        }
-        color: colorScheme[theme].background
-    }
-
     Row {
         id: rating_stars
         spacing: vpx(4)
