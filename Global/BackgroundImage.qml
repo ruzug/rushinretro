@@ -62,6 +62,7 @@ Item {
         visible: opacity > 0 && source
 
         sourceSize { width: 512; height: 512 }
+        verticalAlignment: game.collections.get(0).shortName === "nds" ? Image.AlignBottom : Image.AlignVCenter
         fillMode: Image.PreserveAspectCrop
         asynchronous: true
         smooth: false
@@ -74,6 +75,7 @@ Item {
         visible: opacity > 0
 
         sourceSize { width: 512; height: 512 }
+        verticalAlignment: game.collections.get(0).shortName === "nds" ? Image.AlignBottom : Image.AlignVCenter
         fillMode: Image.PreserveAspectCrop
         asynchronous: true
         smooth: false

@@ -80,6 +80,7 @@ Item {
             source: gameData ? gameData.collections.get(0).shortName === "android" ? "" : gameData.assets.screenshots[0] || gameData.assets.titlescreen || gameData.assets.background || boxArt(modelData) || "" : ""
             fillMode: Image.PreserveAspectCrop
             sourceSize: Qt.size(screenshot.width, screenshot.height)
+            sourceClipRect: gameData.collections.get(0).shortName === "nds" ? Qt.rect(screenshot.width * 0.05, 0, screenshot.width * 0.9, screenshot.height * 0.9) : undefined
             smooth: false
             asynchronous: true
             Behavior on opacity { NumberAnimation { duration: 200 } }
