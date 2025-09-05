@@ -25,7 +25,7 @@ Item {
 
     readonly property double currentMaxOpacity: 1.0
     readonly property string currentSource: {
-        if (!game)
+        if (!game || game.collections.get(0).shortName === "android")
             return "";
         return fanArt(game);
     }
